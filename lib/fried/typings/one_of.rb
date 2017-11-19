@@ -1,6 +1,7 @@
 require "fried/core"
 require "fried/typings/type"
 require "fried/typings/meta_type"
+require "fried/typings/is"
 
 module Fried::Typings
   # Checks if the object {#is_a?} object of the passed types
@@ -21,16 +22,8 @@ module Fried::Typings
 
     def valid?(obj)
       types.any? do |type|
-        matches?(type, obj)
+        Is[type].valid?(obj)
       end
-    end
-
-    private
-
-    def matches?(type, obj)
-      return type.valid?(obj) if type < Type
-
-      obj.is_a?(type)
     end
   end
 end

@@ -21,7 +21,7 @@ class OneOfTest < Minitest::Spec
     customstring_class = Class.new(String)
     customstring = customstring_class.new("blah")
 
-    valid = OneOf[customstring_class, NilClass].valid?(customstring)
+    valid = OneOf[String, NilClass].valid?(customstring)
 
     assert valid == true
   end

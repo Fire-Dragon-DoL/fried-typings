@@ -1,6 +1,7 @@
 require "fried/core"
 require "fried/typings/type"
 require "fried/typings/meta_type"
+require "fried/typings/is_strictly"
 
 module Fried::Typings
   # Checks if the object.class is exactly one of the passed types
@@ -21,16 +22,8 @@ module Fried::Typings
 
     def valid?(obj)
       types.any? do |type|
-        strictly_matches?(type, obj)
+        IsStrictly[type].valid?(obj)
       end
-    end
-
-    private
-
-    def strictly_matches?(type, obj)
-      return type.valid?(obj) if type < Type
-
-      obj.class == type
     end
   end
 end

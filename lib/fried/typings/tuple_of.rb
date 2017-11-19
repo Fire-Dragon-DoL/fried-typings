@@ -1,6 +1,7 @@
 require "fried/core"
 require "fried/typings/type"
 require "fried/typings/meta_type"
+require "fried/typings/is"
 
 module Fried::Typings
   # Checks if Array fields match types specified on a 1-to-1 relationship.
@@ -23,16 +24,8 @@ module Fried::Typings
       return false unless ary.size == types.size
 
       types.each.with_index.all? do |type, index|
-        matches?(type, ary[index])
+        Is[type].valid?(ary[index])
       end
-    end
-
-    private
-
-    def matches?(type, obj)
-      return type.valid?(obj) if type < Type
-
-      obj.is_a?(type)
     end
   end
 end

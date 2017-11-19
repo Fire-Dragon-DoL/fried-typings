@@ -3,8 +3,8 @@ require "fried/typings/meta_type"
 require "fried/typings/type"
 
 module Fried::Typings
-  # Checks if the object {#is_a?} object of the passed type
-  class Is
+  # Checks if the object.class is exactly of the passed type
+  class IsStrictly
     include MetaType
     include Type
 
@@ -21,7 +21,7 @@ module Fried::Typings
     def valid?(obj)
       return type.valid?(obj) if type < Type
 
-      obj.is_a?(type)
+      obj.class == type
     end
   end
 end
