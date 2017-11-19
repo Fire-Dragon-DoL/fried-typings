@@ -3,13 +3,7 @@ require "fried/typings/meta_type"
 
 class MetaTypeTest < Minitest::Spec
   def setup
-    @meta_type = Class.new do
-      include Fried::Typings::MetaType
-
-      def trigger_missing_type!
-        missing_type!
-      end
-    end
+    @meta_type = Class.new { include Fried::Typings::MetaType }
   end
 
   it "delegates .[] to .new" do
@@ -20,6 +14,9 @@ class MetaTypeTest < Minitest::Spec
 
   it "has a method to raise if no type supplied" do
     obj = @meta_type[]
+    def obj.trigger_missing_type!
+      missing_type!
+    end
 
     assert_raises Fried::Typings::MetaType::MissingTypeError do
       obj.trigger_missing_type!
