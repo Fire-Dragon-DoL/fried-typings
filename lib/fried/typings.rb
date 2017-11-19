@@ -9,10 +9,11 @@ module Fried
   module Typings
     # HashOfParams = HashOf[Symbol, Is[String, NilClass]]
 
-    # attribute :bar, Is[Number]
+    # attribute :bar, Is[Numeric]
     # attribute :foo, IsStrictly[String]
     # attribute :bar, EnumeratorOf[Symbol]
-    # attribute :bar, ArrayOf[Number]
+    # attribute :bar, TupleOf[String, Numeric]
+    # attribute :bar, ArrayOf[Numeric]
     # attribute :bar, HashOfParams
   end
 end
