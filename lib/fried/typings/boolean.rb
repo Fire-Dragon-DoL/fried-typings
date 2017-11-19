@@ -1,7 +1,7 @@
 require "fried/core"
-require "fried/typings/type"
+require "fried/typings/one_of"
 
 module Fried::Typings
   # Checks if the object is {TrueClass} or {FalseClass}
-  Boolean = Is[TrueClass, FalseClass]
+  Boolean = OneOf[TrueClass, FalseClass]
 end

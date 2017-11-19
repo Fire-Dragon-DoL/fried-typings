@@ -1,4 +1,9 @@
 require "fried/typings/version"
+require "fried/typings/type"
+require "fried/typings/meta_type"
+require "fried/typings/is"
+require "fried/typings/one_of"
+require "fried/typings/boolean"
 
 module Fried
   module Typings
