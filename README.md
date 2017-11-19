@@ -1,4 +1,4 @@
-# Fried::Typings
+# Fried::Typings [![Build Status][test-badge]][test-link]
 
 Composable type-safety checks
 
@@ -31,3 +31,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Fire-Dragon-DoL/fried-typings.
+
+[test-badge]: https://travis-ci.org/Fire-Dragon-DoL/fried-typings.svg?branch=master
+[test-link]: https://travis-ci.org/Fire-Dragon-DoL/fried-typings
