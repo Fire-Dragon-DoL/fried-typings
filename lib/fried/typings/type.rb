@@ -10,6 +10,8 @@ module Fried::Typings
       end
     end
 
+    # Compares own class with other object (which should be a class)
+    # @param other [Class,Module]
     def <=>(other)
       self.class <=> other
     end
