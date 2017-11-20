@@ -20,9 +20,11 @@ module Fried::Typings
     end
 
     # Notice that the method will actually iterate over the enumerator
-    # @param enumerator [Enumerator, Enumerable]
+    # @param enumerator [Enumerator]
     def valid?(enumerator)
-      enumerator.each.all? { |obj| Is[type].valid?(obj) }
+      return false unless Is[Enumerator].valid?(enumerator)
+
+      enumerator.all? { |obj| Is[type].valid?(obj) }
     end
   end
 end

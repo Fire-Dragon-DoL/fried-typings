@@ -1,6 +1,6 @@
 # Fried::Typings [![Build Status][test-badge]][test-link]
 
-Composable type-safety checks
+Composable type-safety checks.
 
 ## Installation
 
@@ -20,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's say you have a class `Hello` which accepts a name as argument, and you
+want to ensure it's a `String`:
+
+```ruby
+require "fried/typings"
+
+class Hello
+  include Fried::Typings
+
+  def call(name)
+    Is[String].(name)
+
+    "Hello, #{name}"
+  end
+end
+
+hello = Hello.new
+
+hello.("Francesco") # => "Hello, Francesco"
+hello.(123) # => raises TypeError
+```
+
 
 ## Development
 

@@ -7,7 +7,7 @@ class EnumeratorOfTest < Minitest::Spec
   OneOf = Fried::Typings::OneOf
 
   it "returns true when #valid? invoked with objects of type in #[]" do
-    valid = EnumeratorOf[String].valid?(["test", "foo"])
+    valid = EnumeratorOf[String].valid?(["test", "foo"].each)
 
     assert valid == true
   end
@@ -17,20 +17,26 @@ class EnumeratorOfTest < Minitest::Spec
     str1 = customstring_class.new("blah")
     str2 = customstring_class.new("foo")
 
-    valid = EnumeratorOf[String].valid?([str1, str2])
+    valid = EnumeratorOf[String].valid?([str1, str2].each)
 
     assert valid == true
   end
 
   it "returns false when #valid? invoked with not all objects matching type" do
-    valid = EnumeratorOf[String].valid?(["test", 123])
+    valid = EnumeratorOf[String].valid?(["test", 123].each)
 
     assert valid == false
   end
 
   it "returns true when #valid? invoked with objects of nested Type" do
-    valid = EnumeratorOf[OneOf[String, Numeric]].valid?(["test", 123])
+    valid = EnumeratorOf[OneOf[String, Numeric]].valid?(["test", 123].each)
 
     assert valid == true
+  end
+
+  it "returns false when called without an enumerator" do
+    valid = EnumeratorOf[String].valid?(123)
+
+    assert valid == false
   end
 end
