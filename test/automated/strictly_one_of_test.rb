@@ -5,10 +5,10 @@ require "fried/typings/meta_type"
 class StrictlyOneOfTest < Minitest::Spec
   StrictlyOneOf = Fried::Typings::StrictlyOneOf
 
-  it "raises if initialized without types" do
-    assert_raises Fried::Typings::MetaType::MissingTypeError do
-      StrictlyOneOf[]
-    end
+  it "returns false if initialized without types" do
+    valid = StrictlyOneOf[].valid?(123)
+
+    assert valid == false
   end
 
   it "returns true when #valid? invoked with object of type in #[]" do

@@ -17,7 +17,6 @@ module Fried::Typings
 
     def initialize(*types)
       @types = types
-      missing_type! if types.empty?
     end
 
     def valid?(obj)

@@ -11,15 +11,4 @@ class MetaTypeTest < Minitest::Spec
 
     assert obj.is_a?(@meta_type)
   end
-
-  it "has a method to raise if no type supplied" do
-    obj = @meta_type[]
-    def obj.trigger_missing_type!
-      missing_type!
-    end
-
-    assert_raises Fried::Typings::MetaType::MissingTypeError do
-      obj.trigger_missing_type!
-    end
-  end
 end
