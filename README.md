@@ -69,6 +69,7 @@ one_of.(ArgumentError.new) # => false
   **any** of the types
 - `StrictlyOneOf[type1, type2, ...typeN]` checks that object pass
   `IsStrictly[typeN]` for **any** of the types
+- `Anything` matches any object
 - `Boolean` checks that object is either `true` or `false`
 - `ArrayOf[type]` checks that all element of the array pass `Is[type]`
 - `HashOf[key_type, value_type]` checks that all pairs of hash pass
