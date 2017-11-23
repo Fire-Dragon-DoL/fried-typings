@@ -2,6 +2,6 @@ require "fried/core"
 require "fried/typings/one_of"
 
 module Fried::Typings
-  # Never matches any object
+  # Never matches an object
   Nothing = OneOf[]
 end
